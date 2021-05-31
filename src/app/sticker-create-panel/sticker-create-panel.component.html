@@ -1,0 +1,7 @@
+<div class="stickCreatePanel sticker">
+  <div class="container" style="flex-direction: column; height: 100%;">
+    <textarea type="text" class="title" placeholder="Введите заголовок" [(ngModel)]="title"></textarea>
+    <textarea type="text" class="textarea" style="max-width: 100%;" placeholder="Введите текст" [(ngModel)]="text"></textarea>
+    <button class="addBut" #addBut (click)="addNote(title,text)">Добавить</button>
+  </div>
+</div>

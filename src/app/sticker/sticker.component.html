@@ -1,0 +1,17 @@
+<div class="container" style="flex-direction: column; height: 100%;"[ngStyle]="{'display': editing? 'block': 'none'}" >
+    <textarea type="text" class="title" placeholder="Введите заголовок" [(ngModel)]="title"></textarea>
+    <textarea type="text" class="textarea" style="max-width: 100%;" placeholder="Введите текст" [(ngModel)]="text"></textarea>
+</div>
+<div [ngStyle]="{'display': !editing? 'block': 'none'}">
+    <h2 style="text-decoration: underline;" (click)="turnOnEditing()">{{data.title}}</h2>
+    <p (click)="turnOnEditing()">{{data.text}}</p>
+    <div class="dateText">{{data.date|date:'d.MM.yy HH:mm'}}</div>
+    <div class="id">{{data.id}}</div>
+</div>
+<button class="deleteBut UIButs" (click)="deleteSticker()">X</button>
+<button class="confirmBut UIButs" [ngStyle]="{'display': editing? 'block': 'none'}"
+    (click)="turnOffEditing(true)">Yes
+</button>
+<button class="declineBut UIButs" [ngStyle]="{'display': editing? 'block': 'none'}"
+    (click)="turnOffEditing(false)">No
+</button>
