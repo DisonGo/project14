@@ -23,7 +23,8 @@ export class StickerComponent implements OnInit {
   text = "";
   editing = false
   @Input() data!:Sticker;
-  @Output() stickerDelete = new EventEmitter <{id:number}>();
+  @Output() stickerEdited = new EventEmitter <Sticker>();
+  @Output() stickerDelete = new EventEmitter <number>();
   turnOnEditing(){
     this.editing = true
     this.title = this.data.title
@@ -37,15 +38,14 @@ export class StickerComponent implements OnInit {
       this.data.title = this.title
       this.data.text = this.text
       this.data.date = Date.now()
+      this.stickerEdited.emit(this.data)
     }else{
 
     }
     this.editing = false
   }
   deleteSticker() {
-    this.stickerDelete.emit({
-      id: this.data.id
-    })
+    this.stickerDelete.emit(this.data.id)
   }
   ngOnInit(): void {}
 
